@@ -51,14 +51,19 @@
 			<div class="span4 shadow round" id="sideBar">
 				<button id="getRandom" align="center" class="btn"><img src="myButton.png"height="200" width="200" alt="Randomate"></image> Click To Go Random!</button>
 				<h3 align="center">How many poor households are there in Oakland?</h3>
-				<h1 id="theCount" align="center">0</h1>
+				<h1 id="theCount" align="center"><span id="theNumber">0</span> Households in Poverty<span id="theSolution" style="display:none">*</span></h1>
+				<button id="btnSolution"><h5>a humble solution</h5></button>
 			</div>
 		</div>
     </div>
  
 
   <script>
-	
+	$('button#btnSolution').click(function(){
+		$('span#theSolution').fadeIn();
+
+	});
+
 <!--var map = L.map('map').setView([37.987742, -122.158730,13], 12);>
 	
 	
@@ -195,7 +200,7 @@ legend.onAdd = function (map) {
 
 		legend.addTo(map);
 	
-	$("button").click(function(){
+	$("button#getRandom").click(function(){
 //loop through censusTracts
 var totalPoor = 0;
 $.each(censusTracts.features, function(key,value){
@@ -219,7 +224,8 @@ $.each(censusTracts.features, function(key,value){
 	//console.log(totalPoor);
 	
 });
-$("#theCount").html("<h1>" + totalPoor + "</h1>");
+//$("#theCount").html("<h1>" + totalPoor + "</h1>");
+$("#theNumber").text(totalPoor);
 //alert(totalPoor);
 resetMap();
 });
